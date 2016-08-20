@@ -14,7 +14,6 @@ hs_err_pid*
 .idea/
 logs
 project/project
-project/target
 target
 tmp
 .history
@@ -27,3 +26,4 @@ dist
 /RUNNING_PID
 /.settings
 node_modules
+bundle.js
