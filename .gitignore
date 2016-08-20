@@ -10,3 +10,23 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+.idea/
+logs
+project/project
+project/target
+target
+tmp
+.history
+dist
+/*.iml
+/out
+/.idea_modules
+/.classpath
+/.project
+/RUNNING_PID
+/.settings
+node_modules
+start_mongo.bat
+start_mongo.sh
+docker-dir
