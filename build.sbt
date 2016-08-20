@@ -2,14 +2,12 @@ name := "react-play"
 
 version := "1.0"
 
-lazy val `play` = (project in file(".")).enablePlugins(PlayJava)
+lazy val `react-play` = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.11.7"
 
-sbtVersion := "0.13.11"
-
 libraryDependencies ++= Seq(
-  javaJdbc, cache, javaJpa, json, filters, javaWs, specs2 % Test,
+  javaJdbc, cache, javaJpa, json, filters, javaWs,
   "org.mongodb" % "mongodb-driver" % "3.2.2",
   "org.mongodb" % "mongodb-driver-async" % "3.2.2",
   "commons-lang" % "commons-lang" % "2.6",
