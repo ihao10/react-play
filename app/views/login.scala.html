@@ -1,0 +1,27 @@
+@import controllers.LoginCtrl.Login
+@(form: Form[Login])
+<html>
+    <head>
+        <title>Login</title>
+        <a href="@routes.Application.index" id="logo"><span>Index</span></a>
+    </head>
+    <body>
+    @helper.form(routes.LoginCtrl.authenticate) {
+        <h1>Sign in 后期再美化</h1>
+        @if(form.hasGlobalErrors) {
+            <p class="error">
+            @form.globalError.message
+            </p>
+        }
+        <p>
+            <input type="text" name="account" placeholder="Account" value="admin" value="@form("account").value">
+        </p>
+        <p>
+            <input type="password" name="password" placeholder="Password" value="1" value="@form("password").value">
+        </p>
+        <p>
+            <button type="submit">Login</button>
+        </p>
+    }
+    </body>
+</html>

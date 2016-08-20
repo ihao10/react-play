@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Test</title>
+    </head>
+    <body>
+        <div id="container"></div>
+        <div id="content"></div>
+
+        <script src="../../../public/javascripts/bundle.js" type="text/javascript"></script>
+
+        <script>
+
+        var x = 0;
+        var otherObj = {x: 10};
+        function test() {
+            console.log(this.x);
+        }
+        var obj = {};
+        obj.x = 1;
+        obj.func = test;
+        obj.func();//对象o，输出1
+        obj.func.apply(); //全局，输出0
+        obj.func.apply(otherObj);
+
+    </script>
+
+    </body>
+</html>

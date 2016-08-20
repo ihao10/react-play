@@ -27,6 +27,3 @@ dist
 /RUNNING_PID
 /.settings
 node_modules
-start_mongo.bat
-start_mongo.sh
-docker-dir
