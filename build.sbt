@@ -22,4 +22,4 @@ libraryDependencies ++= Seq(
 unmanagedResourceDirectories in Test <+= baseDirectory(_ / "target/web/public/test")
 
 resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
-resolvers += "maven" at "http://192.168.180.106:8888/nexus/content/repositories/central/"
+//resolvers += "maven" at "http://192.168.180.106:8888/nexus/content/repositories/central/"
