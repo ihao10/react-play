@@ -71,7 +71,7 @@ class Header extends Component {
     const styles = this.getStyles();
     return (
       <div>
-        <Title render="TOPSANGO"/>
+        <Title render="Test"/>
         <AppBar
           onLeftIconButtonTouchTap={showNav}
           title={title}

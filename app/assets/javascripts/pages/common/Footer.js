@@ -22,9 +22,9 @@ export default class Footer extends Component {
       <div style={styles.layout}>
         <div style={styles.footerText}>
           Contribute to the
-          <a href='http://www.youzu.com'
+          <a href='https://github.com/'
              target='_blank'
-             style={{textDecoration: 'none'}}> TOPSANGO </a>.
+             style={{textDecoration: 'none'}}> GitHub </a>.
         </div>
       </div>
     );
