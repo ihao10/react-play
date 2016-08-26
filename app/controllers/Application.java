@@ -4,7 +4,7 @@ import play.cache.Cached;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
-import views.html.index;
+import views.html.*;
 
 @Security.Authenticated(Secured.class)
 @Cached(key = "homePage")

@@ -1,4 +1,5 @@
 import com.google.common.collect.Lists;
+import db.DBTest;
 import models.Menu;
 import modules.bindings.MongoDB;
 import org.junit.Test;

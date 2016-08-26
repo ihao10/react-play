@@ -10,7 +10,7 @@ import AppNavDrawer from './AppNavDrawer';
 import FullWidthSection from './FullWidthSection';
 import withWidth, {MEDIUM, LARGE} from 'material-ui/utils/withWidth';
 
-class Master extends Component {
+class Master2 extends Component {
   static propTypes = {
     children: PropTypes.node,
     location: PropTypes.object,

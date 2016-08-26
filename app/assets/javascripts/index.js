@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
-import {hashHistory} from 'react-router';
+import {hashHistory, IndexRoute} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import {Router, Route} from 'react-router';
 import DevTools from './containers/DevTools.js';
@@ -34,9 +34,8 @@ class Index extends Component {
         <Provider store={store}>
           <Router history={history}
                   onUpdate={() => window.scrollTo(0, 0)}>
-            <Route component={ Master }>
-
-              <Route path="/" component={ Todo }/>
+            <Route path="/" component={ Master }>
+              <IndexRoute component={Todo}/>
               {/*<Route path="gameServers" component={ GameServers }/>*/}
               {/*<Route path="users" component={ Users }/>*/}
               <Route path="test" component={ Test }/>

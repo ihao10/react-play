@@ -1,3 +1,5 @@
+package db;
+
 import com.mongodb.ConnectionString;
 import com.mongodb.async.client.MongoClient;
 import com.mongodb.async.client.MongoClients;
