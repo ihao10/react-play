@@ -5,8 +5,6 @@ export default class Test extends Component {
 
   render() {
 
-    const {trueOrFalse, showNav2} = this.props;
-
     return (
       <div>
         <br/>
@@ -20,10 +18,7 @@ export default class Test extends Component {
         <br/>
         <br/>
         <br/>
-        <button onClick={showNav2}>
-          +
-        </button>
-        test: {trueOrFalse}
+        test
       </div>
     )
   }

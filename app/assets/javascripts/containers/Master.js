@@ -7,8 +7,7 @@ import * as masterActions from '../actions/master';
 //将state.navOpen绑定到props的navOpen
 function mapStateToProps(state) {
   return {
-    navOpen: state.navOpen,
-    docked: state.docked
+    master: state.master
   };
 }
 

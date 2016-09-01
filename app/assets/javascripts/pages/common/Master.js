@@ -63,9 +63,10 @@ class Master extends Component {
   }
 
   render() {
-    const {showNav, navOpen, docked} = this.props;
+    const {showNav, master} = this.props;
     console.log("==================");
     console.log(this.props);
+    console.log(this.master);
     const title = this.state.title;
     const styles = this.getStyles();
     return (
@@ -80,7 +81,7 @@ class Master extends Component {
         />
         <Drawer
           docked={false}
-          open={navOpen}
+          open={master.navOpen}
           //onRequestChange={(open) => this.setState({open})}
           onRequestChange={showNav}
         >
@@ -96,8 +97,8 @@ class Master extends Component {
 
 Master.childContextTypes = {
   muiTheme: React.PropTypes.object,
-  navOpen : React.PropTypes.bool,
-  showNav : React.PropTypes.func
+  navOpen: React.PropTypes.bool,
+  showNav: React.PropTypes.func
 };
 
 export default Master;
