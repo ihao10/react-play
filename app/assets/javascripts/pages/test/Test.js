@@ -5,25 +5,213 @@ export default class Test extends Component {
 
   render() {
 
-    const {trueOrFalse, showNav2} = this.props;
-
     return (
       <div>
+        test1
         <br/>
+        test2
         <br/>
+        test3
         <br/>
+        test4
         <br/>
+        test5
         <br/>
+        test
         <br/>
+        test
         <br/>
+        test
         <br/>
+        test
         <br/>
+        test
         <br/>
+        test
         <br/>
-        <button onClick={showNav2}>
-          +
-        </button>
-        test: {trueOrFalse}
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
+        <br/>
+        test
       </div>
     )
   }

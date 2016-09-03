@@ -83,9 +83,3 @@ class FullWidthSection extends Component {
 }
 
 export default withWidth()(FullWidthSection);
-
-
-
-/** WEBPACK FOOTER **
- ** ./src/app/components/FullWidthSection.js
- **/

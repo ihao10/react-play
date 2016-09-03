@@ -1,4 +1,3 @@
-'use strict';
 import React, {Component, PropTypes} from 'react';
 import Title from 'react-title-component';
 import AppBar from 'material-ui/AppBar';
@@ -168,7 +167,7 @@ class Master2 extends Component {
 
     return (
       <div>
-        <Title render="Test" />
+        <Title render="Material-UI" />
         <AppBar
           onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
           title={title}
@@ -232,7 +231,7 @@ class Master2 extends Component {
   }
 }
 
-export default withWidth()(Master);
+export default withWidth()(Master2);
 
 
 

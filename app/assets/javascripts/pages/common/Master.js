@@ -11,6 +11,7 @@ import {darkWhite, lightWhite, grey900} from 'material-ui/styles/colors';
 import FullWidthSection from './FullWidthSection';
 // import AppNavDrawer from './AppNavDrawer';
 import AppMenu from '../components/menu/AppMenu';
+import withWidth, {MEDIUM, LARGE} from 'material-ui/utils/withWidth';
 
 const item = {
   menu: "menu11",
@@ -63,12 +64,12 @@ class Master extends Component {
   }
 
   render() {
-    const {showNav, navOpen, docked} = this.props;
-
+    const {showNav, master, fetchMenu} = this.props;
+    const {title} = this.state;
     console.log("==================");
     console.log(this.props);
-    console.log(navOpen);
-    const title = this.state.title;
+    console.log(this.state);
+    console.log("==================");
     const styles = this.getStyles();
     return (
       <div>
@@ -77,16 +78,15 @@ class Master extends Component {
           onLeftIconButtonTouchTap={showNav}
           title={title}
           zDepth={0}
-          style={styles.appBar}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
         />
         <Drawer
           docked={false}
-          open={false}
+          open={master.navOpen}
           //onRequestChange={(open) => this.setState({open})}
           onRequestChange={showNav}
         >
-          <AppMenu menus={demoMenus}/>
+          <AppMenu menus={item}/>
         </Drawer>
 
         {this.props.children}
@@ -97,9 +97,11 @@ class Master extends Component {
 }
 
 Master.childContextTypes = {
-  muiTheme: React.PropTypes.object
+  muiTheme: React.PropTypes.object,
+  navOpen: React.PropTypes.bool,
+  showNav: React.PropTypes.func
 };
 
-export default Master;
+export default withWidth()(Master);
 
 
