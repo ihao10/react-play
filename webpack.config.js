@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: path.join(__dirname, 'app', 'assets', 'javascripts', 'example'),
+  entry: path.join(__dirname, 'app', 'assets', 'javascripts'),
   output: {
     path: path.join(__dirname, 'public', 'javascripts', 'dist'),
     filename: 'bundle.js'

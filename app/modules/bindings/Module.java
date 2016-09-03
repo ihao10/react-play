@@ -22,7 +22,7 @@ public class Module extends AbstractModule {
     final MongoClient mongoClient = new MongoClient();
     morphia.mapPackage("models");
     final Datastore datastore = morphia.createDatastore(mongoClient, "test");
-//    datastore.ensureIndexes();
+    datastore.ensureIndexes();
     Logger.info("connect db");
 
     bind(MongoClient.class).toInstance(mongoClient);
