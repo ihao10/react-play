@@ -11,64 +11,64 @@ import {cyan500, grey200, darkWhite} from 'material-ui/styles/colors';
 class HomePage extends Component {
 
   static propTypes = {
-    width: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired
   };
 
   static contextTypes = {
-    router: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired
   };
 
   homePageHero() {
     const styles = {
       root: {
         backgroundColor: cyan500,
-        overflow: 'hidden',
+        overflow: 'hidden'
       },
       svgLogo: {
         marginLeft: window.innerWidth * 0.5 - 130,
         width: 420,
-        height: 157,
+        height: 157
       },
       tagline: {
         margin: '16px auto 0 auto',
         textAlign: 'center',
-        maxWidth: 575,
+        maxWidth: 575
       },
       label: {
-        color: lightBaseTheme.palette.primary1Color,
+        color: lightBaseTheme.palette.primary1Color
       },
       githubStyle: {
-        margin: '16px 32px 0px 8px',
+        margin: '16px 32px 0px 8px'
       },
       demoStyle: {
-        margin: '16px 32px 0px 32px',
+        margin: '16px 32px 0px 32px'
       },
       h1: {
         color: darkWhite,
-        fontWeight: typography.fontWeightLight,
+        fontWeight: typography.fontWeightLight
       },
       h2: {
         fontSize: 20,
         lineHeight: '28px',
         paddingTop: 19,
         marginBottom: 13,
-        letterSpacing: 0,
+        letterSpacing: 0
       },
       nowrap: {
-        whiteSpace: 'nowrap',
+        whiteSpace: 'nowrap'
       },
       taglineWhenLarge: {
-        marginTop: 32,
+        marginTop: 32
       },
       h1WhenLarge: {
-        fontSize: 56,
+        fontSize: 56
       },
       h2WhenLarge: {
         fontSize: 24,
         lineHeight: '32px',
         paddingTop: 16,
-        marginBottom: 12,
-      },
+        marginBottom: 12
+      }
     };
 
     styles.h2 = Object.assign({}, styles.h1, styles.h2);
@@ -81,9 +81,8 @@ class HomePage extends Component {
 
     return (
       <FullWidthSection style={styles.root}>
-        <img style={styles.svgLogo} src="images/material-ui-logo.svg" />
         <div style={styles.tagline}>
-          <h1 style={styles.h1}>Material-UI</h1>
+          <h1 style={styles.h1}>Welcome to China</h1>
           <h2 style={styles.h2}>
             A Set of React Components <span style={styles.nowrap}>
             that Implement</span> <span style={styles.nowrap}>
@@ -104,7 +103,7 @@ class HomePage extends Component {
   homePurpose() {
     const styles = {
       root: {
-        backgroundColor: grey200,
+        backgroundColor: grey200
       },
       content: {
         maxWidth: 700,
@@ -116,7 +115,7 @@ class HomePage extends Component {
         paddingTop: 19,
         marginBottom: 13,
         letterSpacing: 0,
-        color: typography.textDarkBlack,
+        color: typography.textDarkBlack
       },
     };
 
@@ -128,13 +127,7 @@ class HomePage extends Component {
         contentType="p"
         className="home-purpose"
       >
-        Material-UI came about from our love of&nbsp;
-        <a href="http://facebook.github.io/react/">React</a> and&nbsp;
-        <a href="https://www.google.com/design/spec/material-design/introduction.html">
-          Google's Material Design
-        </a>. We're currently using it on a project at&nbsp;
-        <a href="https://www.call-em-all.com/Careers">Call-Em-All</a> and plan on adding to it
-        and making it better in the coming months.
+        这里加点描述等等。。。
       </FullWidthSection>
     );
   }
@@ -143,16 +136,16 @@ class HomePage extends Component {
     const styles = {
       root: {
         backgroundColor: grey200,
-        textAlign: 'center',
+        textAlign: 'center'
       },
       h3: {
         margin: 0,
         padding: 0,
         fontWeight: typography.fontWeightLight,
-        fontSize: 22,
+        fontSize: 22
       },
       button: {
-        marginTop: 32,
+        marginTop: 32
       },
     };
 
@@ -165,7 +158,7 @@ class HomePage extends Component {
         <RaisedButton
           label="GitHub"
           primary={true}
-          href="https://github.com/callemall/material-ui"
+          href="https://github.com/ihao10/react-play"
           style={styles.button}
         />
       </FullWidthSection>
@@ -173,12 +166,12 @@ class HomePage extends Component {
   }
 
   handleTouchTapDemo = () => {
-    this.context.router.push('/components');
+    this.context.router.push('/test');
   };
 
   render() {
     const style = {
-      paddingTop: spacing.desktopKeylineIncrement,
+      paddingTop: spacing.desktopKeylineIncrement
     };
 
     return (
