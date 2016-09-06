@@ -170,7 +170,7 @@ class HomePage extends Component {
 
   render() {
     const style = {
-      paddingTop: spacing.desktopKeylineIncrement
+      // paddingTop: spacing.desktopKeylineIncrement
     };
 
     return (

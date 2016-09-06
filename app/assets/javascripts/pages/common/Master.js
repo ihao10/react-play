@@ -12,11 +12,17 @@ import {darkWhite, lightWhite, grey900} from 'material-ui/styles/colors';
 import FullWidthSection from './FullWidthSection';
 import AppMenu from '../components/menu/AppMenu';
 import withWidth, {MEDIUM, LARGE} from 'material-ui/utils/withWidth';
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 
 class Master extends Component {
   getStyles() {
-    return {};
+    return {
+      appBar: {}
+    };
   }
 
   handleChangeMuiTheme = (muiTheme) => {
@@ -50,6 +56,7 @@ class Master extends Component {
   }
 
   render() {
+    const styles = this.getStyles();
     const {changeNav, closeNav, navOpen, menus} = this.props;
     const {title} = this.state;
     console.log(this.props);
@@ -61,6 +68,19 @@ class Master extends Component {
           title={title}
           zDepth={0}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
+          style={styles.appBar}
+          iconElementRight={
+            <IconMenu
+              iconButtonElement={
+                <IconButton><MoreVertIcon /></IconButton>
+              }
+              targetOrigin={{horizontal: 'right', vertical: 'top'}}
+              anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+            >
+              <MenuItem primaryText="Refresh"/>
+              <MenuItem primaryText="Sign out"/>
+            </IconMenu>
+          }
         />
         <Drawer
           docked={false}
