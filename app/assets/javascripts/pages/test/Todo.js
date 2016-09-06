@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 
 const styles = {
   text: {
-    fontSize: '300px'
+    fontSize: '900px'
   }
 };
 export default class Todo extends Component {

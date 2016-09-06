@@ -39,9 +39,9 @@ class Index extends Component {
               {/*<Route path="users" component={ Users }/>*/}
               <Route path="test" component={ Test }/>
 
-              <Route path="gameNews" component={ Todo }/>
-              <Route path="gameSubscribe" component={ Todo }/>
-              <Route path="manyCats" component={ Todo }/>
+              <Route path="game-news" component={ Todo }/>
+              <Route path="game-subscribe" component={ Todo }/>
+              <Route path="many-cats" component={ Todo }/>
               <Route path="description" component={ Description }/>
             </Route>
           </Router>

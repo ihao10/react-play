@@ -35,17 +35,17 @@ class AppMenu extends Component {
             <ListItem
               key={1}
               primaryText="Game News"
-              containerElement={<Link to="/gameNews"/>}
+              containerElement={<Link to="/game-news"/>}
             />,
             <ListItem
               key={2}
               primaryText="Game Subscribe"
-              containerElement={<Link to="/gameSubscribe"/>}
+              containerElement={<Link to="/game-subscribe"/>}
             />,
             <ListItem
               key={3}
               primaryText="Many Cats"
-              containerElement={<Link to="/manyCats"/>}
+              containerElement={<Link to="/many-cats"/>}
             />,
             <ListItem
               key={4}
