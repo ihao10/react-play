@@ -1,11 +1,12 @@
 import {combineReducers} from 'redux';
 import {routerReducer as routing} from 'react-router-redux';
-import master from './master';
+import {changeNav, fetchMenus} from './master';
 //import custom-reducers from 'XXX';
 
 const rootReducer = combineReducers({
   // your middlewares
-  master,
+  changeNav,
+  fetchMenus,
 
   routing,
 });

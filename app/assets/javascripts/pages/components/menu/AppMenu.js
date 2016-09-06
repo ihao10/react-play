@@ -21,40 +21,35 @@ class AppMenu extends Component {
   render() {
     const {menus} = this.props;
     return (
-      <List>
-        <AppBar title="Nav"/>
+      <div>
+
         {menus.list.map((item, i)=> <AppMenuItem param={item} key={i}/>)}
 
         <Divider/>
         <ListItem
           key={10000}
           primaryText="Surprise"
-          leftIcon={<ContentSend />}
           initiallyOpen={true}
           primaryTogglesNestedList={true}
           nestedItems={[
             <ListItem
               key={1}
               primaryText="Game News"
-              leftIcon={<ActionGrade />}
               containerElement={<Link to="/gameNews"/>}
             />,
             <ListItem
               key={2}
               primaryText="Game Subscribe"
-              leftIcon={<ActionGrade />}
               containerElement={<Link to="/gameSubscribe"/>}
             />,
             <ListItem
               key={3}
               primaryText="Many Cats"
-              leftIcon={<ActionGrade />}
               containerElement={<Link to="/manyCats"/>}
             />,
             <ListItem
               key={4}
               primaryText="Test"
-              leftIcon={<ActionGrade />}
               containerElement={<Link to="/test"/>}
             />
           ]}
@@ -62,10 +57,9 @@ class AppMenu extends Component {
 
         <ListItem
           primaryText="Description"
-          leftIcon={<ContentSend />}
           containerElement={<Link to="/description"/>}
         />
-      </List>
+      </div>
     )
 
   }

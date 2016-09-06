@@ -1,15 +1,26 @@
 'use strict';
+import {RECEIVE_MENUS, CHANGE_NAV, CLOSE_NAV} from '../actions/master';
 
-export default function showNav(state = {navOpen: false}, action) {
+export function changeNav(state = false, action) {
+  switch (action.type) {
+    case CHANGE_NAV:
+      return !state;
+    case CLOSE_NAV:
+      return false;
+    default:
+      return state
+  }
+}
 
-  return Object.assign({}, state, {
-    navOpen: !state.navOpen
-  });
+export function fetchMenus(state = {
+  subheader: "subheader",
+  list: []
+}, action) {
+  switch (action.type) {
+    case RECEIVE_MENUS:
+      return action.menus;
 
-};
-
-// export default function fetchMenu(state, action) {
-//
-//
-// }
-
+    default:
+      return state;
+  }
+}

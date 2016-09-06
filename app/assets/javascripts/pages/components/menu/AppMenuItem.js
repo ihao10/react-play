@@ -1,6 +1,6 @@
 'use strict';
-import React, { PropTypes, Component } from 'react'
-import { Link } from 'react-router'
+import React, {PropTypes, Component} from 'react'
+import {Link} from 'react-router'
 import ListItem from 'material-ui/List/ListItem';
 import ContentSend from 'material-ui/svg-icons/content/send';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
@@ -16,20 +16,11 @@ export class AppMenuItem extends Component {
 
   render() {
 
-    const { param } = this.props;
-    const itemLists = []
-    if (param.list != null) {
-      param.list.map((subItem, i) => itemLists.push(<ListItem
-        primaryText={param.menu}
-        key={i}
-        leftIcon={<ActionGrade />}
-        containerElement={<Link to={subItem.value} />}
-      />))
-    }
+    const {param} = this.props;
+    const itemLists = combineMenu(param.list);
     return (
       <ListItem
         primaryText={param.menu}
-        leftIcon={<ContentSend />}
         initiallyOpen={true}
         primaryTogglesNestedList={true}
         nestedItems={
@@ -38,6 +29,22 @@ export class AppMenuItem extends Component {
       />
     )
   }
+}
+
+function combineMenu(list = []) {
+  const itemLists = [];
+  if (list == null) {
+    return itemLists;
+  }
+  list.map((subItem, i) => itemLists.push(<ListItem
+    primaryText={subItem.menu}
+    key={i}
+    containerElement={<Link to={subItem.value}/>}
+    nestedItems={
+      combineMenu(subItem.list)
+    }
+  />));
+  return itemLists;
 }
 
 export default AppMenuItem;

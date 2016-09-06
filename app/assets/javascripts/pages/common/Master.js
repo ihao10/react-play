@@ -6,36 +6,17 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import Drawer from "material-ui/Drawer";
-import Divider from "material-ui/Divider";
+import {Link} from 'react-router'
+import {List, ListItem} from 'material-ui/List';
 import {darkWhite, lightWhite, grey900} from 'material-ui/styles/colors';
 import FullWidthSection from './FullWidthSection';
-// import AppNavDrawer from './AppNavDrawer';
 import AppMenu from '../components/menu/AppMenu';
 import withWidth, {MEDIUM, LARGE} from 'material-ui/utils/withWidth';
 
-const item = {
-  menu: "menu11",
-  icon: "icon11",
-  value: "/test",
-  list: []
-}
-const demoMenus = {
-  subheader: "subheader",
-  list: [{
-    menu: "menu",
-    icon: "icon",
-    list: [item]
-  }]
-}
 
 class Master extends Component {
   getStyles() {
-    return {
-      appBar: {
-        position: 'fixed',
-        top: 0
-      },
-    };
+    return {};
   }
 
   handleChangeMuiTheme = (muiTheme) => {
@@ -63,30 +44,41 @@ class Master extends Component {
     });
   }
 
+  componentDidMount() {
+    const {fetchMenus} = this.props;
+    fetchMenus()
+  }
+
   render() {
-    const {showNav, master, fetchMenu} = this.props;
+    const {changeNav, closeNav, navOpen, menus} = this.props;
     const {title} = this.state;
-    console.log("==================");
     console.log(this.props);
-    console.log(this.state);
-    console.log("==================");
-    const styles = this.getStyles();
     return (
       <div>
         <Title render="Test"/>
         <AppBar
-          onLeftIconButtonTouchTap={showNav}
+          onLeftIconButtonTouchTap={changeNav}
           title={title}
           zDepth={0}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
         />
         <Drawer
           docked={false}
-          open={master.navOpen}
-          //onRequestChange={(open) => this.setState({open})}
-          onRequestChange={showNav}
+          open={navOpen}
+          onRequestChange={closeNav}
         >
-          <AppMenu menus={item}/>
+          <List>
+            <AppBar
+              title={menus.subheader}
+              onLeftIconButtonTouchTap={changeNav}
+              onTitleTouchTap={changeNav}
+            />
+            <ListItem
+              primaryText="Welcome"
+              containerElement={<Link to="/"/>}
+            />
+            <AppMenu menus={menus}/>
+          </List>
         </Drawer>
 
         {this.props.children}

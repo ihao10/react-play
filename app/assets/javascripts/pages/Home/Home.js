@@ -82,7 +82,7 @@ class HomePage extends Component {
     return (
       <FullWidthSection style={styles.root}>
         <div style={styles.tagline}>
-          <h1 style={styles.h1}>Welcome to China</h1>
+          <h1 style={styles.h1}>Welcome to Shanghai</h1>
           <h2 style={styles.h2}>
             A Set of React Components <span style={styles.nowrap}>
             that Implement</span> <span style={styles.nowrap}>
@@ -127,7 +127,6 @@ class HomePage extends Component {
         contentType="p"
         className="home-purpose"
       >
-        这里加点描述等等。。。
       </FullWidthSection>
     );
   }
@@ -158,7 +157,7 @@ class HomePage extends Component {
         <RaisedButton
           label="GitHub"
           primary={true}
-          href="https://github.com/ihao10/react-play"
+          href="https://github.com/"
           style={styles.button}
         />
       </FullWidthSection>
