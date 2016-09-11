@@ -32,6 +32,8 @@ public class LoginCtrl extends Controller {
         return ok(login.render(formFactory.form(Login.class)));
     }
 
+
+    /** TODO add salt & MD5 */
     public Result authenticate() {
 
         Form<Login> loginForm = formFactory.form(Login.class).bindFromRequest();

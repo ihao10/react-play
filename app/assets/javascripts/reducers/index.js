@@ -1,3 +1,5 @@
+'use strict';
+
 import {combineReducers} from 'redux';
 import {routerReducer as routing} from 'react-router-redux';
 import {changeNav, fetchMenus} from './master';
@@ -8,6 +10,6 @@ const rootReducer = combineReducers({
   changeNav,
   fetchMenus,
 
-  routing,
+  routing
 });
 export default rootReducer;

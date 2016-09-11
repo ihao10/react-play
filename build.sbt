@@ -11,10 +11,9 @@ libraryDependencies ++= Seq(
   "org.mongodb" % "mongodb-driver" % "3.2.2",
   "org.mongodb" % "mongodb-driver-async" % "3.2.2",
   "commons-lang" % "commons-lang" % "2.6",
-//  "com.alibaba" % "fastjson" % "1.2.11",
+  "com.alibaba" % "fastjson" % "1.2.17",
   "org.mongodb.morphia" % "morphia" % "1.2.1",
   "org.apache.curator" % "curator-recipes" % "2.10.0"
-
 
 )
 
