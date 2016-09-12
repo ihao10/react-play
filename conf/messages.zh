@@ -1,3 +1,8 @@
 hello=你好
 error=错误
 user.info=用户信息
+param.wrong=参数错误
+not.found=没有找到
+param.lost=缺少参数
+server.exist=服务器已经存在
+server.not.exist=服务器不存在

@@ -1,3 +1,3 @@
 'use strict';
 
-//普通api全部卸载action模块中
+//普通api全部写在action模块中

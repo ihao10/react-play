@@ -6,7 +6,6 @@ import modules.bindings.GlobalBinding;
 import play.i18n.Messages;
 import play.libs.Json;
 import play.mvc.BodyParser;
-import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.inject.Inject;
@@ -16,10 +15,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 
-public class Test extends Controller {
+public class Test extends AppController {
 
   @Inject
   private GlobalBinding globalCache;
+
 
   public Result index() {
     String message = Messages.get(globalCache.test);
@@ -37,7 +37,7 @@ public class Test extends Controller {
     Map<String, String> map = Maps.newHashMap();
     map.put("1", "a");
     map.put("b", globalCache.test);
-    return ok(Json.toJson(map));
+    return ok(langGet("user.info"));
   }
 
 

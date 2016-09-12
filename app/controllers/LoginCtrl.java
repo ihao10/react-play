@@ -6,14 +6,13 @@ import play.cache.CacheApi;
 import play.cache.NamedCache;
 import play.data.Form;
 import play.data.FormFactory;
-import play.mvc.Controller;
 import play.mvc.Result;
 import services.UserService;
-import views.html.*;
+import views.html.login;
 
 import javax.inject.Inject;
 
-public class LoginCtrl extends Controller {
+public class LoginCtrl extends AppController {
     @Inject
     FormFactory formFactory;
     @Inject

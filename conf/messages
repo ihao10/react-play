@@ -1,3 +1,8 @@
 hello=hello
 error=error
 user.info=User info
+param.wrong=Param Wrong
+not.found=Not Found
+param.lost=Param lost
+server.exist=Server is exist
+server.not.exist=Server is not exist

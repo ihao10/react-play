@@ -1,5 +1,6 @@
 package message.server;
 
+import com.youzu.topsango.shared.WorldOpenLevel;
 import message.AppMessage;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ public class ServerInfo implements AppMessage {
 
   private int page;
   private int totalPage;
+  private int totalNum;
   private List<ServerItem> items;
 
   public int getPage() {
@@ -27,6 +29,14 @@ public class ServerInfo implements AppMessage {
     this.totalPage = totalPage;
   }
 
+  public int getTotalNum() {
+    return totalNum;
+  }
+
+  public void setTotalNum(int totalNum) {
+    this.totalNum = totalNum;
+  }
+
   public List<ServerItem> getItems() {
     return items;
   }
@@ -35,10 +45,9 @@ public class ServerInfo implements AppMessage {
     this.items = items;
   }
 
-
-  /** 所有字段都传过去吧，省得搞2个类了 */
-  public static class ServerItem {
+  public static class ServerItem implements AppMessage {
     private long id;
+    private WorldOpenLevel openLevel = WorldOpenLevel.TEST;
     private String name;
     private String passportKey;
     private String flashUrl;
@@ -51,6 +60,14 @@ public class ServerInfo implements AppMessage {
 
     public void setId(long id) {
       this.id = id;
+    }
+
+    public WorldOpenLevel getOpenLevel() {
+      return openLevel;
+    }
+
+    public void setOpenLevel(WorldOpenLevel openLevel) {
+      this.openLevel = openLevel;
     }
 
     public String getName() {
@@ -92,6 +109,7 @@ public class ServerInfo implements AppMessage {
     public void setUserDataCenterUrl(String userDataCenterUrl) {
       this.userDataCenterUrl = userDataCenterUrl;
     }
+
   }
 }
 

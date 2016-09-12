@@ -29,9 +29,9 @@ export function fetchMenus() {
   return dispatch => {
     dispatch(requestMenus());
     return dispatch(receiveMenus(jsonMenu));
-    // return appFetch.read('/menu')
-    //   .then(response => response.json())
-    //   .then(json=>dispatch(receiveMenus(json)))
+    return appFetch.read('/menu')
+      .then(response => response.json())
+      .then(json=>dispatch(receiveMenus(json)))
 
   }
 }
