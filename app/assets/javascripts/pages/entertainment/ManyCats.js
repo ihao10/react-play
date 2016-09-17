@@ -5,7 +5,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Avatar from 'material-ui/Avatar';
 import FileFolder from 'material-ui/svg-icons/file/folder';
 
-const CardExampleWithAvatar = () => (
+const ManyCats = () => (
   <Card>
     <CardHeader
       title="URL Avatar"
@@ -33,4 +33,4 @@ const CardExampleWithAvatar = () => (
   </Card>
 );
 
-export default CardExampleWithAvatar;
+export default ManyCats;

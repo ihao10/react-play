@@ -19,11 +19,14 @@ import Todo from './pages/test/Todo';
 import Description from './pages/help/Description';
 import Master from './containers/Master';
 import Home from './pages/home/Home';
+import Server from './containers/Server';
+import ManyCats from './pages/entertainment/ManyCats';
+import Main from './pages/components/frame/index';
 
 injectTapEventPlugin();
 
-const store = configureStore()
-const history = syncHistoryWithStore(hashHistory, store)
+const store = configureStore();
+const history = syncHistoryWithStore(hashHistory, store);
 
 class Index extends Component {
 
@@ -38,10 +41,10 @@ class Index extends Component {
               {/*<Route path="gameServers" component={ GameServers }/>*/}
               {/*<Route path="users" component={ Users }/>*/}
               <Route path="test" component={ Test }/>
-
-              <Route path="game-news" component={ Todo }/>
+              <Route path="server" component={ Server }/>
+              <Route path="game-news" component={ Main }/>
               <Route path="game-subscribe" component={ Todo }/>
-              <Route path="many-cats" component={ Todo }/>
+              <Route path="many-cats" component={ ManyCats }/>
               <Route path="description" component={ Description }/>
             </Route>
           </Router>

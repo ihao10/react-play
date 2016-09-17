@@ -15,15 +15,14 @@ const defaultParams = {
 /**
  * HTTP GET
  * @param  {string} url
- * @param  {object} body
+ * @param  {object} params
  * @param  {function} func
  * @return {Promise}
  */
-export function read(url, body = {}, func = doNothing) {
-  return fetch(url, {
+export function read(url, params = {}, func = doNothing) {
+  return fetch(toQueryUrl(url, params), {
     ...defaultParams,
-    method: 'get',
-    body: JSON.stringify(body)
+    method: 'get'
   }).then(checkStatus)
     .then(response => handleResponse(response))
     .then(response => func(response))
@@ -33,15 +32,14 @@ export function read(url, body = {}, func = doNothing) {
 /**
  * HTTP GET
  * @param  {string} url
- * @param  {object} body
+ * @param  {object} params
  * @param  {function} func
  * @return {Promise}
  */
-export function readJson(url, body = {}, func = doNothing) {
-  return fetch(url, {
+export function readJson(url, params = {}, func = doNothing) {
+  return fetch(toQueryUrl(url, params), {
     ...defaultParams,
-    method: 'get',
-    body: JSON.stringify(body)
+    method: 'get'
   }).then(checkStatus)
     .then(response => response.json())
     .then(json => func(json))
@@ -123,4 +121,17 @@ function handleResponse(response) {
 }
 
 function doNothing(json) {
+}
+
+function toQueryUrl(url, params) {
+  var parts = [];
+  for (var i in params) {
+    if (params.hasOwnProperty(i)) {
+      parts.push(encodeURIComponent(i) + "=" + encodeURIComponent(params[i]))
+    }
+  }
+  if (parts.isEmpty) {
+    return url
+  }
+  return url + "?" + parts.join("&");
 }

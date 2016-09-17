@@ -8,7 +8,7 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 
 resolvers += "Typesafe repository 2" at "https://repo.typesafe.com/typesafe/maven-releases/"
 
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.6")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.8")
 
 
 //

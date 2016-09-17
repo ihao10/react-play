@@ -35,7 +35,7 @@ public class ServerService {
       worldIds.sort((o1, o2) -> (int) (o2 - o1));
       int total = worldIds.size();
       int beginIndex = IntMath.checkedMultiply(num, page - 1);
-      if (total < beginIndex) {
+      if (total <= beginIndex) {
         return serverInfo;
       }
       List<Long> need = worldIds.subList(beginIndex, Math.min(endIndex, total - 1));

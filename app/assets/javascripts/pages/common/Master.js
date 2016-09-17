@@ -1,33 +1,42 @@
 'use strict';
-import React, {Component, PropTypes} from 'react';
-import Title from 'react-title-component';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import AppBar from 'material-ui/AppBar';
+import React, {Component, PropTypes} from "react";
+import getMuiTheme from "material-ui/styles/getMuiTheme";
+import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
-import {Link} from 'react-router'
-import {List, ListItem} from 'material-ui/List';
-import {darkWhite, lightWhite, grey900} from 'material-ui/styles/colors';
-import FullWidthSection from './FullWidthSection';
-import AppMenu from '../components/menu/AppMenu';
-import withWidth, {MEDIUM, LARGE} from 'material-ui/utils/withWidth';
-import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import {Link} from "react-router";
+import {List, ListItem} from "material-ui/List";
+import AppMenu from "../components/menu/AppMenu";
+import withWidth from "material-ui/utils/withWidth";
+import IconButton from "material-ui/IconButton";
+import IconMenu from "material-ui/IconMenu";
+import MenuItem from "material-ui/MenuItem";
+import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
+import spacing from "material-ui/styles/spacing";
+import Paper from "material-ui/Paper";
+import Title from 'react-title-component';
 
 
 class Master extends Component {
   getStyles() {
     return {
-      appBar: {}
+      appBar: {
+        position: 'fixed',
+        // Needed to overlap the examples
+        zIndex: this.state.muiTheme.zIndex.appBar + 1,
+        top: 0
+      },
+      root: {
+        paddingTop: spacing.desktopGutterLess
+      },
+      content: {
+        margin: spacing.desktopGutter
+      }
     };
   }
 
   handleChangeMuiTheme = (muiTheme) => {
     this.setState({
-      muiTheme: muiTheme,
+      muiTheme: muiTheme
     });
   };
 
@@ -39,14 +48,14 @@ class Master extends Component {
 
   componentWillMount() {
     this.setState({
-      muiTheme: getMuiTheme(),
+      muiTheme: getMuiTheme()
     });
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
     const newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({
-      muiTheme: newMuiTheme,
+      muiTheme: newMuiTheme
     });
   }
 
@@ -57,18 +66,15 @@ class Master extends Component {
 
   render() {
     const styles = this.getStyles();
-    const {changeNav, closeNav, navOpen, menus} = this.props;
+    const {children, changeNav, closeNav, navOpen, menus} = this.props;
     const {title} = this.state;
     console.log(this.props);
     return (
       <div>
-        <Title render="Test"/>
         <AppBar
           onLeftIconButtonTouchTap={changeNav}
-          title={title}
+          title="Thirty-Six Stratagems"
           zDepth={0}
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          style={styles.appBar}
           iconElementRight={
             <IconMenu
               iconButtonElement={
@@ -82,6 +88,11 @@ class Master extends Component {
             </IconMenu>
           }
         />
+
+        <Paper zDepth={0}>
+          {React.cloneElement(children)}
+        </Paper>
+
         <Drawer
           docked={false}
           open={navOpen}
@@ -92,6 +103,7 @@ class Master extends Component {
               title={menus.subheader}
               onLeftIconButtonTouchTap={changeNav}
               onTitleTouchTap={changeNav}
+              zDepth={1}
             />
             <ListItem
               primaryText="Welcome"
@@ -100,9 +112,6 @@ class Master extends Component {
             <AppMenu menus={menus}/>
           </List>
         </Drawer>
-
-        {this.props.children}
-
       </div>
     )
   }
@@ -111,7 +120,9 @@ class Master extends Component {
 Master.childContextTypes = {
   muiTheme: React.PropTypes.object,
   navOpen: React.PropTypes.bool,
-  showNav: React.PropTypes.func
+  showNav: React.PropTypes.func,
+  changeNav: React.PropTypes.func,
+  menus: React.PropTypes.object
 };
 
 export default withWidth()(Master);

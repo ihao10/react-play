@@ -18,17 +18,13 @@ public class Server extends AppController {
   @Inject
   private ServerService serverService;
 
-  @BodyParser.Of(BodyParser.Json.class)
-  public Result list() {
-    final JsonNode json = request().body().asJson();
-    final int page = json.findParent("page").asInt(1);
-    final int num = json.findParent("num").asInt();
+  public Result list(int page, int num) {
     if (num == 0) {
       return badRequest(langGet("param.wrong"));
     }
     final ServerInfo result;
     try {
-      result = serverService.list(num, page);
+      result = serverService.list(page, num);
     } catch (AppException e) {
       return internalServerError(e.getMessage());
     }
@@ -91,9 +87,7 @@ public class Server extends AppController {
   }
 
   @BodyParser.Of(BodyParser.Json.class)
-  public Result detail() {
-    final JsonNode json = request().body().asJson();
-    final String idStr = json.findParent("id").asText();
+  public Result detail(String idStr) {
     final long worldId = Long.parseLong(idStr);
     Optional<ServerInfo.ServerItem> itemOp = serverService.detail(worldId);
     if (itemOp.isPresent()) {

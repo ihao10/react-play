@@ -17,7 +17,8 @@ public class ZookeeperCache {
   public final ZkGlobalWorldMappingCache worldMappingCache;
   public final ZkGameWorldConfigCache worldConfigCache;
 
-  public ZookeeperCache(CuratorFramework zookeeper, PathChildrenCache serverCache, ZkGlobalWorldMappingCache worldMappingCache, ZkGameWorldConfigCache worldConfigCache) {
+  public ZookeeperCache(CuratorFramework zookeeper, PathChildrenCache serverCache,
+                        ZkGlobalWorldMappingCache worldMappingCache, ZkGameWorldConfigCache worldConfigCache) {
     this.zookeeper = zookeeper;
     this.serverCache = serverCache;
     this.worldMappingCache = worldMappingCache;

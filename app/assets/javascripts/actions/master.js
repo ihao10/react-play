@@ -49,7 +49,7 @@ const jsonMenu = {
     {
       "menu": "Manage",
       "list": [
-        {"menu": "Server List", "value": "/server-list"},
+        {"menu": "Server List", "value": "/server"},
         {"menu": "Server Open", "value": "/server-open"}
       ]
     },

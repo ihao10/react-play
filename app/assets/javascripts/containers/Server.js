@@ -6,7 +6,7 @@ import * as serverActions from '../actions/server';
 
 function mapStateToProps(state) {
   return {
-    servers: state.receiveServers
+    receiveServers: state.receiveServers
   };
 }
 
