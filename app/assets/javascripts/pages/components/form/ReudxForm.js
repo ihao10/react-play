@@ -15,6 +15,7 @@ export const renderTextField = ({input, label, meta: {touched, error}, ...custom
     errorText={touched && error}
     {...input}
     {...custom}
+    style ={{width: '100%'}}
   />
 );
 

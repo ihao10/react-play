@@ -15,8 +15,20 @@ import spacing from "material-ui/styles/spacing";
 import Paper from "material-ui/Paper";
 import Title from 'react-title-component';
 
+import ErrorDialog from '../components/dialog/ErrorDialog';
+import NormalDialog from '../components/dialog/NormalDialog';
 
+
+import RaisedButton from 'material-ui/RaisedButton';
+
+// TODO 通用dialog的实现不太合理，有空再研究
 class Master extends Component {
+
+  state = {
+    masterErrorDialogOpen: false,
+    masterNormalDialogOpen: false
+  };
+
   getStyles() {
     return {
       appBar: {
@@ -37,6 +49,18 @@ class Master extends Component {
   handleChangeMuiTheme = (muiTheme) => {
     this.setState({
       muiTheme: muiTheme
+    });
+  };
+
+  onShowMasterErrorDialog = ()=> {
+    this.setState({
+      masterErrorDialogOpen: true
+    });
+  };
+
+  onCloseMasterErrorDialog = ()=> {
+    this.setState({
+      masterErrorDialogOpen: false
     });
   };
 
@@ -112,6 +136,13 @@ class Master extends Component {
             <AppMenu menus={menus}/>
           </List>
         </Drawer>
+
+        <ErrorDialog open={this.state.masterErrorDialogOpen}
+                     onClose={this.onCloseMasterErrorDialog}/>
+        <NormalDialog open={this.state.masterNormalDialogOpen}
+                      onClose={this.onCloseMasterErrorDialog}/>
+
+
       </div>
     )
   }

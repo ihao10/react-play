@@ -23,12 +23,14 @@ public class LoggingFilter extends Filter {
     return next.apply(rh).thenApply(result -> {
       long endTime = System.currentTimeMillis();
       long costTime = endTime - startTime;
-      Logger.info("{} took {}ms status {} uri {}",
-          rh.method(),
-          costTime,
-          result.status(),
-          rh.uri()
-      );
+      if (Logger.isDebugEnabled()) {
+        Logger.debug("{} took {}ms status {} uri {}",
+            rh.method(),
+            costTime,
+            result.status(),
+            rh.uri()
+        );
+      }
       return result.withHeader("Request-Time", "" + costTime);
     });
   }
