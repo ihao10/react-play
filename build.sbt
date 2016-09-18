@@ -4,7 +4,7 @@ version := "1.0"
 
 lazy val `react-play` = (project in file(".")).enablePlugins(PlayJava)
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
   javaJdbc, cache, javaJpa, json, filters, javaWs,
