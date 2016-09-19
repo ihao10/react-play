@@ -15,11 +15,12 @@ import MainBlock from "../components/frame/MainBlock";
 import {Tabs, Tab} from "material-ui/Tabs";
 import SwipeableViews from "react-swipeable-views";
 import Paper from "material-ui/Paper";
-import TextField from "material-ui/TextField";
 import MenuItem from 'material-ui/MenuItem'
 import {Field, reduxForm} from 'redux-form';
+import RaisedButton from 'material-ui/RaisedButton';
+import {APP_STYLES} from "../../utils/appStyles"
 
-import * as ReduxForms from "../components/form/ReudxForm";
+import * as ReduxForms from "../components/form/ReduxForm";
 
 const validate = values => {
   const errors = {};
@@ -33,12 +34,12 @@ const validate = values => {
 };
 
 class Server extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      slideIndex: 0
-    };
-  }
+
+  state = {
+    slideIndex: 0,
+    // 是save还是update
+    isSave: false
+  };
 
   handleSwitch = (value)=> {
     this.setState({
@@ -57,6 +58,16 @@ class Server extends Component {
     fetchServers({num: 10, page: 1})
   }
 
+  handleSubmit = (formData)=> {
+    const {create, update} = this.props;
+    if (this.state.isSave == true) {
+      create(formData);
+    } else {
+      update(formData);
+    }
+  };
+
+
   render() {
     const {receiveServers, handleSubmit, pristine, reset, submitting} = this.props;
     var items = [];
@@ -71,7 +82,7 @@ class Server extends Component {
         )
       )
     }
-
+    var submitLabel = this.state.isSave ? "Submit" : "update";
     return (
 
       <MainBlock title={'Server Manager'}>
@@ -87,7 +98,7 @@ class Server extends Component {
             index={this.state.slideIndex}
             onChangeIndex={this.handleSwitch}
           >
-            <div>
+            <div style={APP_STYLES.appContent}>
               <Table
                 fixedHeader={true}
               >
@@ -107,15 +118,45 @@ class Server extends Component {
                     <TableRowColumn>demo</TableRowColumn>
                     <TableRowColumn>demo</TableRowColumn>
                   </TableRow>
+                  <TableRow>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                  </TableRow>
+                  <TableRow>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                  </TableRow>
+                  <TableRow>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                  </TableRow>
+                  <TableRow>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                  </TableRow>
+                  <TableRow>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                    <TableRowColumn>demo</TableRowColumn>
+                  </TableRow>
                 </TableBody>
               </Table>
             </div>
-            <div>
+            <div style={APP_STYLES.appContent}>
 
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit(this.handleSubmit)}>
 
                 <div>
-                  <Field name="id" component={ReduxForms.renderTextField} label="Server id"/>
+                  <Field name="id" type="number" component={ReduxForms.renderTextField} label="Server id"/>
                 </div>
 
                 <div>
@@ -132,11 +173,26 @@ class Server extends Component {
                 <div>
                   <Field name="worldOpenTime" component={ReduxForms.renderTextField} label="Open Time"/>
                 </div>
+                <div>
+                  <Field name="passportKey" component={ReduxForms.renderTextField} label="Passport Key"/>
+                </div>
+                <div>
+                  <Field name="flashUrl" component={ReduxForms.renderTextField} label="Flash Url"/>
+                </div>
+                <div>
+                  <Field name="userDataCenterUrl" component={ReduxForms.renderTextField} label="User Data Center Url"/>
+                </div>
                 <br/>
                 <div>
-                  <button type="submit" disabled={pristine || submitting}>Submit</button>
-                  <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values
-                  </button>
+                  <RaisedButton type="Submit" label={submitLabel} primary={true} fullWidth={true}
+                                disabled={pristine || submitting}/>
+                  <br/>
+                  <br/>
+                  <RaisedButton type="Submit" label="Synchronize" secondary={true} fullWidth={true}
+                                disabled={pristine || submitting}/>
+                  <br/>
+                  <br/>
+                  <RaisedButton label="Reset" fullWidth={true} disabled={pristine || submitting} onClick={reset}/>
                 </div>
 
               </form>

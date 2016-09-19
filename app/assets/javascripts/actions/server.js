@@ -25,9 +25,10 @@ function receiveServerDetail(detail) {
   }
 }
 
-function createServer() {
+function createServer(server) {
   return {
-    type: CREATE_SERVER
+    type: CREATE_SERVER,
+    json: server
   }
 }
 
@@ -62,7 +63,7 @@ export function fetchServerDetail(body) {
 export function create(body) {
   return dispatch => {
     return appFetch.create(URI_SERVER, body, response => {
-      dispatch(createServer())
+      dispatch(createServer(response))
     })
   }
 }
