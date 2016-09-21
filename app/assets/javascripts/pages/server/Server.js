@@ -10,6 +10,7 @@ import {
   TableRow,
   TableRowColumn
 } from "material-ui/Table";
+import FlatButton from 'material-ui/FlatButton';
 import withWidth from "material-ui/utils/withWidth";
 import MainBlock from "../components/frame/MainBlock";
 import {Tabs, Tab} from "material-ui/Tabs";
@@ -38,7 +39,7 @@ class Server extends Component {
   state = {
     slideIndex: 0,
     // 是save还是update
-    isSave: false
+    isSave: true
   };
 
   handleSwitch = (value)=> {
@@ -74,10 +75,12 @@ class Server extends Component {
     if (receiveServers.items != null) {
       receiveServers.items.map((item, i)=>
         items.push(
-          <TableRow>
+          <TableRow key={item.id}>
             <TableRowColumn>{item.id}</TableRowColumn>
             <TableRowColumn>{item.name}</TableRowColumn>
-            <TableRowColumn>{item.openlevel}</TableRowColumn>
+            <TableRowColumn>{item.openLevel}</TableRowColumn>
+            <TableRowColumn>{item.worldOpenTime}</TableRowColumn>
+            <TableRowColumn> <FlatButton label="Update" primary={true}/> </TableRowColumn>
           </TableRow>
         )
       )
@@ -86,7 +89,6 @@ class Server extends Component {
     return (
 
       <MainBlock title={'Server Manager'}>
-        <Paper>
           <Tabs
             onChange={this.handleSwitch}
             value={this.state.slideIndex}
@@ -108,46 +110,11 @@ class Server extends Component {
                     <TableHeaderColumn>Name</TableHeaderColumn>
                     <TableHeaderColumn>Status</TableHeaderColumn>
                     <TableHeaderColumn>OpenTime</TableHeaderColumn>
+                    <TableHeaderColumn>Operate</TableHeaderColumn>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {items}
-                  <TableRow>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                  </TableRow>
-                  <TableRow>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                  </TableRow>
-                  <TableRow>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                  </TableRow>
-                  <TableRow>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                  </TableRow>
-                  <TableRow>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                  </TableRow>
-                  <TableRow>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                    <TableRowColumn>demo</TableRowColumn>
-                  </TableRow>
                 </TableBody>
               </Table>
             </div>
@@ -198,8 +165,8 @@ class Server extends Component {
               </form>
 
             </div>
+
           </SwipeableViews>
-        </Paper>
       </MainBlock>
     );
   }

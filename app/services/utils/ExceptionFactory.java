@@ -1,4 +1,4 @@
-package models.utils;
+package services.utils;
 
 import play.Logger;
 

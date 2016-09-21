@@ -1,6 +1,6 @@
-package models.utils;
+package services.utils;
 
-public class AppException extends Exception {
+public class AppException extends RuntimeException {
 
     public AppException() {
     }

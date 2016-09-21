@@ -8,7 +8,7 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Result;
 import services.UserService;
-import views.html.login;
+import views.html.*;
 
 import javax.inject.Inject;
 

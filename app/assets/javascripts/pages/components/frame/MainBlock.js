@@ -6,7 +6,7 @@ import spacing from "material-ui/styles/spacing";
 
 const styles = {
   block: {
-    margin: spacing.desktopGutterMini,
+    marginTop: spacing.desktopGutterMini,
     paddingBottom: spacing.desktopGutter
   },
   blockTitle: {

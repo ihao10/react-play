@@ -27,7 +27,7 @@ public class ServerHelper {
     display.setFlashUrl(config.getFlashUrl());
     display.setName(config.getName());
     display.setOpenLevel(config.getOpenLevel());
-    return new ServerInfo.ServerItem();
+    return display;
   }
 
 }

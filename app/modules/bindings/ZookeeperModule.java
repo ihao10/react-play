@@ -1,17 +1,10 @@
 package modules.bindings;
 
 import com.google.inject.AbstractModule;
-import com.youzu.topsango.shared.ZkDataSourceConfigCache;
-import com.youzu.topsango.shared.ZkGameWorldConfigCache;
-import com.youzu.topsango.shared.ZkGlobalWorldMappingCache;
-import com.youzu.topsango.shared.persistence.GameShardStrategiesKt;
-import com.youzu.util.CommonDao;
-import com.youzu.util.CommonDaoHibernate;
-import kotlin.Unit;
-import models.utils.ExceptionFactory;
+import com.youzu.topsango.shared.configuration.ZkGameWorldConfigCache;
+import com.youzu.topsango.shared.configuration.ZkGlobalWorldMappingCache;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
-import org.apache.curator.framework.recipes.cache.PathChildrenCache;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import play.Configuration;
 import play.Environment;
@@ -43,16 +36,8 @@ public class ZookeeperModule extends AbstractModule {
     zookeeper.start();
     Logger.info("zookeeper connected");
 
-    // server list cache
-    PathChildrenCache gameWorldsCache = new PathChildrenCache(zookeeper, zkRoot + "/game_worlds", false);
-    try {
-      gameWorldsCache.start(PathChildrenCache.StartMode.NORMAL);
-    } catch (Exception e) {
-      throw ExceptionFactory.newRuntimeException("init zookeeper error", e);
-    }
-
     ZkGlobalWorldMappingCache worldMappingCache = new ZkGlobalWorldMappingCache(zookeeper);
-    ZookeeperCache serverCache = new ZookeeperCache(zookeeper, null, worldMappingCache, new ZkGameWorldConfigCache(worldMappingCache, zookeeper));
+    ZookeeperCache serverCache = new ZookeeperCache(zookeeper, worldMappingCache, new ZkGameWorldConfigCache(worldMappingCache, zookeeper));
 
 //    ZookeeperCache serverCache = new ZookeeperCache(null, null, null, null);
     bind(ZookeeperCache.class).toInstance(serverCache);

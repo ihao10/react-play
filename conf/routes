@@ -27,3 +27,4 @@ POST          /server                   controllers.Server.save
 PUT           /server                   controllers.Server.update
 DELETE        /server                   controllers.Server.delete
 GET           /server/detail/:id        controllers.Server.detail(id)
+GET           /server/sync/:id          controllers.Server.syncFromOperation(id)

@@ -7,8 +7,7 @@ import com.google.inject.Inject;
 import com.youzu.topsango.shared.SystemConstantsKt;
 import com.youzu.topsango.shared.configuration.ZkGameWorldConfig;
 import message.server.ServerInfo;
-import models.utils.AppException;
-import models.utils.ExceptionFactory;
+import services.utils.ExceptionFactory;
 import modules.bindings.ZookeeperCache;
 import play.Configuration;
 import services.helper.ServerHelper;
@@ -25,20 +24,21 @@ public class ServerService {
   @Inject
   private ZookeeperCache zookeeperCache;
 
-  public ServerInfo list(int page, int num) throws AppException {
+  public ServerInfo list(int page, int num) {
     ServerInfo serverInfo = new ServerInfo();
     serverInfo.setPage(page);
     try {
       int endIndex = IntMath.checkedMultiply(num, page);
       // TODO 这边数据源应该做下排序
-      List<Long> worldIds = Lists.newArrayList(zookeeperCache.worldMappingCache.getWorldIdMapping().values());
+//      List<Long> worldIds = Lists.newArrayList(zookeeperCache.worldMappingCache.getWorldIdMapping().values());
+      List<Long> worldIds = Lists.newArrayList(1L, 3001010001L);
       worldIds.sort((o1, o2) -> (int) (o2 - o1));
       int total = worldIds.size();
       int beginIndex = IntMath.checkedMultiply(num, page - 1);
       if (total <= beginIndex) {
         return serverInfo;
       }
-      List<Long> need = worldIds.subList(beginIndex, Math.min(endIndex, total - 1));
+      List<Long> need = worldIds.subList(beginIndex, Math.min(endIndex, total));
       List<ServerInfo.ServerItem> list = Lists.newArrayListWithCapacity(need.size());
       need.forEach(worldId -> {
         ZkGameWorldConfig config = zookeeperCache.worldConfigCache.getConfig(worldId);
@@ -53,7 +53,7 @@ public class ServerService {
     return serverInfo;
   }
 
-  public Optional<String> save(ServerInfo.ServerItem item) throws AppException {
+  public Optional<String> save(ServerInfo.ServerItem item) {
     final long newWorldId = item.getId();
     if (zookeeperCache.worldMappingCache.getWorldIdMapping().containsKey(newWorldId)) {
       return Optional.of("server.exist");
@@ -67,7 +67,7 @@ public class ServerService {
     return Optional.empty();
   }
 
-  public Optional<String> update(ServerInfo.ServerItem item) throws AppException {
+  public Optional<String> update(ServerInfo.ServerItem item) {
     final long newWorldId = item.getId();
     if (!zookeeperCache.worldMappingCache.getWorldIdMapping().containsKey(newWorldId)) {
       return Optional.of("server.not.exist");
@@ -89,7 +89,7 @@ public class ServerService {
     return Optional.of(ServerHelper.zkToItem(config));
   }
 
-  public void delete(long worldId) throws AppException {
+  public void delete(long worldId) {
     if (!zookeeperCache.worldMappingCache.getWorldIdMapping().containsKey(worldId)) {
       return;
     }
@@ -100,5 +100,6 @@ public class ServerService {
     }
 
   }
+
 
 }

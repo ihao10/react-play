@@ -20,4 +20,7 @@ abstract class AppController extends Controller {
   String langGet(String i18nId) {
     return messagesApi.preferred(request()).at(i18nId);
   }
+
+
+
 }
