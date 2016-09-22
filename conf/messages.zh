@@ -7,3 +7,5 @@ not.found=没有找到
 param.lost=缺少参数
 server.exist=服务器已经存在
 server.not.exist=服务器不存在
+platform.request.error=平台请求异常
+platform.request.wrong=平台请求错误

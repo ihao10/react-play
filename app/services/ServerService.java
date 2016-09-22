@@ -1,6 +1,8 @@
 package services;
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import com.google.common.math.IntMath;
 import com.google.inject.Inject;
@@ -13,6 +15,8 @@ import play.Configuration;
 import services.helper.ServerHelper;
 
 import javax.inject.Singleton;
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,12 +85,12 @@ public class ServerService {
     return Optional.empty();
   }
 
-  public Optional<ServerInfo.ServerItem> detail(long worldId) {
+  public Optional<ServerInfo.ServerDetail> detail(long worldId) {
     if (!zookeeperCache.worldMappingCache.getWorldIdMapping().containsKey(worldId)) {
       return Optional.empty();
     }
     ZkGameWorldConfig config = zookeeperCache.worldConfigCache.getConfig(worldId);
-    return Optional.of(ServerHelper.zkToItem(config));
+    return Optional.of(ServerHelper.zkToDetail(config));
   }
 
   public void delete(long worldId) {
@@ -98,7 +102,29 @@ public class ServerService {
     } catch (Exception e) {
       throw ExceptionFactory.newAppException("zookeeper server delete", e);
     }
+  }
 
+  public ServerInfo.ServerDetail parseDataNode(JsonNode dataNode) {
+    final ServerInfo.ServerDetail serverDetail = new ServerInfo.ServerDetail();
+    ObjectMapper mapper = new ObjectMapper();
+    // TODO serverId之后改为String
+    serverDetail.setId(dataNode.findValue("server_id").asLong());
+    serverDetail.setName(dataNode.findValue("server_name").asText());
+    serverDetail.setWorldOpenTime(new Date(dataNode.findValue("first_opentime").asLong()));
+    serverDetail.setOpgameId(dataNode.findValue("opgame_id").asText());
+    try {
+      serverDetail.setOpId(mapper.readValue(dataNode.findValue("op_id").asText(), ServerHelper.STRING_LIST));
+    } catch (IOException e) {
+      throw ExceptionFactory.newAppException(e);
+    }
+    serverDetail.setRechargeUrl(dataNode.findValue("rechargeUrl").asText());
+    serverDetail.setRechargeUrl(dataNode.findValue("server_key").asText());
+    serverDetail.setRechargeUrl(dataNode.findValue("server_url").asText());
+    serverDetail.setRechargeUrl(dataNode.findValue("server_ip").asText());
+    serverDetail.setRechargeUrl(dataNode.findValue("server_nip").asText());
+    serverDetail.setRechargeUrl(dataNode.findValue("fcm_time").asText());
+
+    return serverDetail;
   }
 
 

@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import constants.ConfigKeyConstants;
 import constants.LangKeyConstants;
 import message.server.ServerInfo;
+import play.api.i18n.Lang;
 import services.utils.RequestUtils;
 import services.utils.ResultUtils;
 import play.Configuration;
@@ -84,7 +85,7 @@ public class Server extends AppController {
 
   public Result detail(String idStr) {
     final long worldId = Long.parseLong(idStr);
-    Optional<ServerInfo.ServerItem> itemOp = serverService.detail(worldId);
+    Optional<ServerInfo.ServerDetail> itemOp = serverService.detail(worldId);
     if (itemOp.isPresent()) {
       return ok(Json.toJson(itemOp.get()));
     }
@@ -113,12 +114,20 @@ public class Server extends AppController {
     return RequestUtils.createWSRequest(wsClient, url).get().thenApply(response -> {
       final JsonNode jsonNode = response.asJson();
 
-      // TODO 这边要看下数据结构
+      JsonNode stateNode = jsonNode.findValue("state");
+      if (stateNode == null) {
+        return badRequest(langGet(LangKeyConstants.PLATFORM_REQUEST_ERROR));
+      }
 
-      final ServerInfo.ServerItem item = new ServerInfo.ServerItem();
+      int stat = stateNode.asInt();
+      JsonNode dataNode = jsonNode.findValue("data");
+      if (stat != 0) {
+        final String msg = dataNode.findValue("msg").asText();
+        final String cause = msg == null ? langGet(LangKeyConstants.PLATFORM_REQUEST_WRONG) : msg;
+        return badRequest(cause);
+      }
 
-
-      return ok(Json.toJson(item));
+      return ok(Json.toJson(serverService.parseDataNode(dataNode)));
     });
   }
 

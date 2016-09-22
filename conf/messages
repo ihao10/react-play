@@ -7,3 +7,5 @@ param.lost=Param lost
 server.exist=Server is exist
 server.not.exist=Server is not exist
 server.not.found=Server not found
+platform.request.error=Platform request error
+platform.request.wrong=Platform request wrong
